@@ -1,30 +1,5 @@
-erDiagram
-    USUARIOS ||--o{ LISTAS : crea
-    LISTAS ||--o{ ITEMS : contiene
+## Diagrama de la base de datos
 
-    USUARIOS {
-        bigint id PK
-        varchar email "UNIQUE"
-        varchar password
-        varchar nombre
-        boolean es_premium "FALSE = Free"
-    }
+Aquí se muestra el diseño Entidad-Relación de la base de datos:
 
-    LISTAS {
-        bigint id PK
-        bigint usuario_id FK
-        varchar titulo
-        varchar descripcion
-        varchar icono "Emoji"
-        varchar categoria
-        boolean publica
-        int num_descargas
-    }
-
-    ITEMS {
-        bigint id PK
-        bigint lista_id FK
-        varchar nombre
-        boolean completado
-        varchar seccion "Default: General"
-    }
+![Diagrama de Base de Datos](./diagrama_bbdd.png)
