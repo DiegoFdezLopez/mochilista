@@ -1,1 +1,30 @@
+erDiagram
+    USUARIOS ||--o{ LISTAS : crea
+    LISTAS ||--o{ ITEMS : contiene
 
+    USUARIOS {
+        bigint id PK
+        varchar email "UNIQUE"
+        varchar password
+        varchar nombre
+        boolean es_premium "FALSE = Free"
+    }
+
+    LISTAS {
+        bigint id PK
+        bigint usuario_id FK
+        varchar titulo
+        varchar descripcion
+        varchar icono "Emoji"
+        varchar categoria
+        boolean publica
+        int num_descargas
+    }
+
+    ITEMS {
+        bigint id PK
+        bigint lista_id FK
+        varchar nombre
+        boolean completado
+        varchar seccion "Default: General"
+    }
