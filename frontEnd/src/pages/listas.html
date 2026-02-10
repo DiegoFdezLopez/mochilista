@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Panel Mochilista - Grid View</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        :root {
+            --sage-green: #7d9488;
+            --sage-green-light: #f4f6f5;
+            --dusty-blue: #8ba5b3;
+            --terracotta: #c98e76;
+            --neutral-bg: #ffffff;
+            --footer-bg: #f8f9f8;
+            --border-subtle: #eeeeee;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--neutral-bg);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(0,0,0,0.08);
+        }
+        .sticky-header {
+            background-color: rgba(244, 246, 245, 0.8);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7d9488",
+                        "accent-blue": "#8ba5b3",
+                        "accent-warm": "#c98e76",
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="text-[#3a3a3a] antialiased">
+    <div class="min-h-screen flex flex-col">
+        <header class="sticky top-0 z-50 w-full sticky-header">
+            <div class="max-w-6xl mx-auto px-8 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary/20 p-1.5 rounded-lg flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-xl">backpack</span>
+                    </div>
+                    <span class="text-sm font-bold tracking-[0.2em] uppercase text-gray-700">Mochilista</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <nav class="hidden md:flex items-center gap-6 mr-4">
+                        <a class="text-xs font-semibold text-primary transition-colors uppercase tracking-widest"
+                            href="#">Mis Listas</a>
+                        <a class="text-xs font-semibold text-gray-400 hover:text-primary transition-colors uppercase tracking-widest"
+                            href="#">Explorar</a>
+                    </nav>
+                    <div class="flex items-center gap-4 border-l border-gray-200 pl-6">
+                        <button
+                            class="material-symbols-outlined text-gray-400 hover:text-primary transition-colors">settings</button>
+                        <div class="size-8 rounded-full bg-white border border-gray-100 shadow-sm overflow-hidden">
+                            <img alt="Profile" class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_Tqe0jJo6AbflaaJ8kW6MMe80rd_yaxebCJp0A9vZ5IlpZBKrIjMs1WxrkgIbVKWMTZPSpLfPjBy_rtZEjrsnDT8xfZIki80wMD3-Cngx3_CwETZj9lnvFrRgxwBJ_y5kI4cj1lW-YZOhXf0ME6j6D4V8HaFJzETktovVV40GJ5Ib-CFBPGRYXqNDRtGT11kNhmf0CU_nPgdLS882i0o5FVtuwiCYkkojax3eLpkciqidvtcCfNV8SsImOGdKDP8fRgTlNKz5WjA" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="flex-grow w-full max-w-6xl mx-auto px-8 py-12 flex flex-col gap-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+                <div class="space-y-1">
+                    <h1 class="text-4xl font-light tracking-tight text-[#111]">Mis Listas</h1>
+                    <p class="text-gray-400 text-sm">Gestiona tus próximos destinos y aventuras</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-3">
+                    <button
+                        class="flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl text-sm font-semibold hover:bg-[#6a8276] transition-all shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-[20px]">add_circle</span>
+                        <span>Crear nueva lista</span>
+                    </button>
+                    <button
+                        class="flex items-center gap-2 bg-white text-gray-600 px-5 py-3 rounded-xl text-sm font-semibold border border-gray-200 hover:bg-gray-50 transition-all shadow-sm">
+                        <span class="material-symbols-outlined text-[20px]">explore</span>
+                        <span>Buscar públicas</span>
+                    </button>
+                    <button
+                        class="flex items-center gap-2 bg-accent-blue text-white px-5 py-3 rounded-xl text-sm font-semibold hover:bg-[#7a94a2] transition-all shadow-lg shadow-accent-blue/20">
+                        <span class="material-symbols-outlined text-[20px]">description</span>
+                        <span>Plantillas</span>
+                    </button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group cursor-pointer card-hover">
+                    <div class="relative aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-gray-100 shadow-sm">
+                        <img alt="Japón"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqMzcD9uF3Lc4Mz0y8cO2pvPZ5siFBNAcKz8WNP9e2iyfAikIXemG_hZDEi-GBxfBiyzRjKsHxgX2T-JmeKV-OZOUFYEWTnI0heZObxaYa4CRxcSHDNUEU4mYxAbUEJ2o5jHrM7C2s8gsZZ2KqHmAI7aBr4WzVsTmM8ScMZPWfsx_UN0vKF4vz0lfr2csMAUvGCo49foc4hUbKXsVPmqcCMT7fnO_RgSO7aj9DWFDCOMALhm-FF1xx7uglAizfyUPSso0-ADR5JxM" />
+                        <div class="absolute inset-0 bg-black/5"></div>
+                        <div class="absolute top-4 right-4">
+                            <span
+                                class="text-[10px] font-bold text-white uppercase tracking-wider bg-primary/90 backdrop-blur px-3 py-1 rounded-full">Activa</span>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-xl font-medium text-gray-800 group-hover:text-primary transition-colors">Viaje a
+                            Japón</h3>
+                        <div class="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-widest">
+                            <span>15 Oct 2023</span>
+                            <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                            <span>42 objetos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer card-hover">
+                    <div class="relative aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-gray-100 shadow-sm">
+                        <img alt="Weekend"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgTGNLxw1Bcv0L0wEO9WtIoL7r6H944geNTJzfmUxKpL6DB9DUBcR-WKavWd7NL-VilTgkv02KTa__MIquaXayxP4nrHi10IMOd54yCArcrGo5afSUEB1JphqoH-5WuuT32PTaSfggAOoCdQiz_pUzVaqAdKuayBMJfV7WeGrDLnn2jE7YWfQa8s-PiiPEQ2OGfz4J6WtMnII9uM39SexcuPEJytbLVqjrsECJjD35nURFUWCPITEcWBFavuHJMODxaGld0b0jD_M" />
+                        <div class="absolute inset-0 bg-black/5"></div>
+                        <div class="absolute top-4 right-4">
+                           <!-- <span
+                                class="text-[10px] font-bold text-gray-500 uppercase tracking-wider bg-white/90 backdrop-blur px-3 py-1 rounded-full">Archivada</span>
+                            -->
+                            </div>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-xl font-medium text-gray-800 group-hover:text-primary transition-colors">
+                            Escapada de fin de semana</h3>
+                        <div class="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-widest">
+                            <span>Completado</span>
+                            <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                            <span>18 objetos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer card-hover">
+                    <div class="relative aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-gray-100 shadow-sm">
+                        <img alt="Camping"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIU2jK67Zh332jKATI2soTwvumiWf9d9Vz09W5b0GhTSW_x6piaOStChuOrUzRd-g_ccLbFI1HchI_Z350g3WWtQTzr5BHWQx5mkcikLBb-sk-w-NcdCGTE59k0s4cQsuafMvDTccRuIhl9VbaWqaoptmWD6jibcE68680TLS4WaHYxb3H85MHnodYQLfmb0OT3qgOreg0bRk20VB3_mogTabJuy39ijwFPhq7pyEWHDBH85XJfEx2xA5ld_D4qVKAtU_elAicVzA" />
+                        <div class="absolute inset-0 bg-black/5"></div>
+                        <div class="absolute top-4 right-4">
+                            <span
+                                class="text-[10px] font-bold text-white uppercase tracking-wider bg-accent-warm/90 backdrop-blur px-3 py-1 rounded-full">En
+                                curso</span>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-xl font-medium text-gray-800 group-hover:text-primary transition-colors">Camping
+                            Pirineos</h3>
+                        <div class="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-widest">
+                            <span>Próxima semana</span>
+                            <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                            <span>35 objetos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group cursor-pointer card-hover opacity-80 hover:opacity-100">
+                    <div
+                        class="relative aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-gray-50 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-4 text-gray-300 group-hover:border-primary/30 group-hover:bg-primary/5 transition-colors">
+                        <span class="material-symbols-outlined text-4xl">content_copy</span>
+                        <span class="text-xs font-semibold uppercase tracking-widest">Usar Plantilla</span>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-xl font-normal text-gray-500 italic">Equipaje de mano</h3>
+                        <div class="flex items-center gap-2 text-xs text-gray-300 uppercase tracking-widest">
+                            <span>Configuración base</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="w-full bg-[var(--footer-bg)] border-t border-gray-100 py-12 px-8 mt-12">
+            <div class="max-w-6xl mx-auto flex flex-col gap-8">
+                <div class="flex flex-wrap gap-8 text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-400">
+                    <a class="hover:text-primary transition-colors" href="#">Comunidad</a>
+                    <a class="hover:text-primary transition-colors" href="#">Plantillas</a>
+                    <a class="hover:text-primary transition-colors" href="#">Ayuda</a>
+                    <a class="hover:text-primary transition-colors" href="#">Privacidad</a>
+                    <a class="hover:text-primary transition-colors" href="#">Términos</a>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="text-[10px] text-gray-400 tracking-widest">
+                        © 2024 MOCHILISTA — MINIMAL PACKING EXPERTS
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <div class="flex gap-4">
+                            <div class="size-2 rounded-full bg-primary/30"></div>
+                            <div class="size-2 rounded-full bg-accent-blue/30"></div>
+                            <div class="size-2 rounded-full bg-accent-warm/30"></div>
+                        </div>
+                        <span class="text-[10px] text-gray-300 uppercase tracking-widest font-medium">Hecho para
+                            viajeros</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>

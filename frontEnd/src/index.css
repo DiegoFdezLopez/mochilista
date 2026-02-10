@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base */
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* Quitar flechas en input number */
+.compact-input::-webkit-outer-spin-button,
+.compact-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.compact-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Check custom */
+.custom-checkbox:checked {
+  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA94MHQ1TAH6V7NEv2vTx7-7UhjlGTYQrpWgPAw3ygeNbAxUl2Rfmyr59W2dtQetQtNpL5xeZaqCpsSFDfvRo3U-NVX7isPEhSZPWtcN9O-fxItDrVAfrKT5wXmwmloHcxsDXcv9YK6yzPNERhmKU0M2u095Z1Biq53D8I8z-RUbJnsf3kNWaE3l6tNH7pl3GWZCkaPH_5w9yXeHv_xpreAWDwn1V0M6aSsmgqIs5vfKBmIXbOxjma7OaKMTo6cmOj9oCVuhbeg43U");
+  background-size: 12px 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
